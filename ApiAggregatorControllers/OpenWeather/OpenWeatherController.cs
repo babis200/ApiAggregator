@@ -1,7 +1,6 @@
-﻿using ApiAggregatorConfiguration;
+﻿using Refit;
+using ApiAggregatorConfiguration;
 using Microsoft.AspNetCore.Mvc;
-using ApiAggregatorControllers.Refit.OpenWeather;
-using Refit;
 
 namespace ApiAggregatorControllers.OpenWeather
 {
@@ -19,11 +18,29 @@ namespace ApiAggregatorControllers.OpenWeather
         }
 
         [HttpGet("{city}")]
-        public async Task<IActionResult> GetWeather(string city)
+        public async Task<IActionResult> GetWeatherForCityAsync(string city)
         {
             try
             {
-                var weatherData = await _openWeatherApi.GetWeatherAsync(city, _config.ApiKey);
+                var weatherData = await _openWeatherApi.GetWeatherForCityAsync(city, _config.ApiKey);
+                return Ok(weatherData);
+            }
+            catch (ApiException e)
+            {
+                return StatusCode((int)e.StatusCode, "Error fetching weather data.");
+            }
+            catch (Exception e)
+            {
+                return BadRequest("An error occurred while fetching weather data.");
+            }
+        }
+
+        [HttpGet("{zipCode}")]
+        public async Task<IActionResult> GetWeatherForZipCodeAsync(string zipCode)
+        {
+            try
+            {
+                var weatherData = await _openWeatherApi.GetWeatherForZipCodeAsync(zipCode, _config.ApiKey);
                 return Ok(weatherData);
             }
             catch (ApiException e)

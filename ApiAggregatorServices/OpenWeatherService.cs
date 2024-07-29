@@ -21,7 +21,7 @@ namespace ApiAggregatorServices
 
         public async Task<WeatherModel> GetWeatherAsync(string city)
         {
-            return await _openWeatherApi.GetWeatherAsync(city, _config.ApiKey);
+            return await _openWeatherApi.GetWeatherForCityAsync(city, _config.ApiKey);
         }
 
         public async Task<WeatherModel> GetWeatherForZipCodeAsync(string zipCode)
