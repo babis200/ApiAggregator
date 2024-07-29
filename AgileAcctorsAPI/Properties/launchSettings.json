@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "AgileAcctorsAPI": {
+    "ApiAggregator": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

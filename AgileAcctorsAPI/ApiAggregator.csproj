@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>0428a45f-874d-4a60-9f85-e348e2adb37c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Refit" Version="7.1.2" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	  <PackageReference Include="Refit.HttpClientFactory" Version="7.1.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiAggregatorModels\ApiAggregatorModels.csproj" />
+    <ProjectReference Include="..\ApiAggregatorServices\ApiAggregatorServices.csproj" />
+    <ProjectReference Include="..\ApiAggregatorControllers\ApiAggregatorControllers.csproj" />
+  </ItemGroup>
+
+</Project>
