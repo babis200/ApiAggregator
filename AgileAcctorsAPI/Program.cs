@@ -19,6 +19,9 @@ builder.Services.AddSingleton(openWeatherConfig);
 var newsApiConfig = builder.Configuration.GetSection("NewsApi").Get<NewsApiConfig>();
 builder.Services.AddSingleton(newsApiConfig);
 
+var spotifyConfig = builder.Configuration.GetSection("Spotify").Get<SpotifyConfig>();
+builder.Services.AddSingleton(spotifyConfig);
+
 // Register the Refit client 
 //TODO - put this in seperate class 'AddRefit' 
 builder.Services.AddRefitClient<IOpenWeatherApi>()
@@ -35,6 +38,15 @@ builder.Services.AddRefitClient<INewsApi>()
         c.DefaultRequestHeaders.Authorization =
             new System.Net.Http.Headers.AuthenticationHeaderValue("X-Api-Key", newsApiConfig.ApiKey);
 
+    });
+
+builder.Services.AddRefitClient<ISpotifyApi>()
+    .ConfigureHttpClient(c =>
+    {
+        c.BaseAddress = spotifyConfig.BaseAddress;
+        c.DefaultRequestHeaders.Authorization =
+            new System.Net.Http.Headers.AuthenticationHeaderValue(
+                "Basic", $"{spotifyConfig.ClientId}:{spotifyConfig.ClientSecret}");
     });
 
 
