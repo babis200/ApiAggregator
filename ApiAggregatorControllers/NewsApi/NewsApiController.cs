@@ -1,30 +1,30 @@
-﻿using ApiAggregatorConfiguration;
+﻿using ApiAggregatorServices.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using NewsAPI.Constants;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Refit;
 
 namespace ApiAggregatorControllers.NewsApi
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class NewsApiController : ControllerBase
     {
-        private readonly INewsApi _newsApi;
-        private readonly NewsApiConfig _config;
+        private readonly INewsApiService _newsApiService;
 
-        public NewsApiController(INewsApi NewsApi, NewsApiConfig config)
+        public NewsApiController(INewsApiService newsApiService)
         {
-            _newsApi = NewsApi;
-            _config = config;
+            _newsApiService = newsApiService;
         }
 
-        [HttpGet("{top-headlines}")]
+        [HttpGet("top-headlines")]
         public async Task<IActionResult> GetWeatherForCityAsync(
             string country, Categories categories, string keywords)
         {
             try
             {
-                var response = await _newsApi.GetTopHeadlinesAsync(country, categories, keywords, _config.ApiKey);
+                var response = await _newsApiService.GetTopHeadlinesAsync(country, categories, keywords);
                 return Ok(response);
             }
             catch (ApiException e)
@@ -37,12 +37,13 @@ namespace ApiAggregatorControllers.NewsApi
             }
         }
 
-        [HttpGet("{everything}")]
-        public async Task<IActionResult> GetEverythingAsync(string keywords, Categories categories)
+        [HttpGet("everything")]
+        public async Task<IActionResult> GetEverythingAsync(
+            string? keywords)
         {
             try
             {
-                var response = await _newsApi.GetEverythingAsync(keywords, categories, _config.ApiKey);
+                var response = await _newsApiService.GetEverythingAsync(keywords);
                 return Ok(response);
             }
             catch (ApiException e)

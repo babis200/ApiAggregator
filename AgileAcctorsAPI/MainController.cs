@@ -21,7 +21,7 @@ namespace ApiAggregatorControllers
         [HttpGet(Name = "GetWeatherForCity")]
         public async Task<WeatherModel> GetAsync(string city) //TODO - Replace WeatherModel with ViewModel
         {
-            return await _openWeatherService.GetWeatherAsync(city);
+            return await _openWeatherService.GetWeatherForCityAsync(city);
         }
     }
 }

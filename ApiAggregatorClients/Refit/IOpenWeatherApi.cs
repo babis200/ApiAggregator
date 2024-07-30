@@ -1,7 +1,7 @@
 ﻿using ApiAggregatorModels.OpenWeather;
 using Refit;
 
-namespace ApiAggregatorControllers.OpenWeather
+namespace ApiAggregatorClients.Refit
 {
     public interface IOpenWeatherApi
     {

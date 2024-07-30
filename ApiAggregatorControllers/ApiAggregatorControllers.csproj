@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApiAggregatorConfiguration\ApiAggregatorConfiguration.csproj" />
+    <ProjectReference Include="..\ApiAggregatorServices\ApiAggregatorServices.csproj" />
     <ProjectReference Include="..\ApiAggregatorModels\ApiAggregatorModels.csproj" />
   </ItemGroup>
 

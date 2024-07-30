@@ -1,9 +1,7 @@
 using Refit;
 using ApiAggregator;
 using ApiAggregatorConfiguration;
-using ApiAggregatorControllers.Refit.OpenWeather;
-using ApiAggregatorControllers.Refit.NewsApi;
-
+using ApiAggregatorClients.Refit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +17,7 @@ var openWeatherConfig = builder.Configuration.GetSection("OpenWeather").Get<Open
 builder.Services.AddSingleton(openWeatherConfig);
 
 var newsApiConfig = builder.Configuration.GetSection("NewsApi").Get<NewsApiConfig>();
-builder.Services.AddSingleton(openWeatherConfig);
+builder.Services.AddSingleton(newsApiConfig);
 
 // Register the Refit client 
 //TODO - put this in seperate class 'AddRefit' 
@@ -32,7 +30,11 @@ builder.Services.AddRefitClient<IOpenWeatherApi>()
 builder.Services.AddRefitClient<INewsApi>()
     .ConfigureHttpClient(c =>
     {
-        c.BaseAddress = openWeatherConfig.BaseAddress;
+        c.BaseAddress = newsApiConfig.BaseAddress;
+        c.DefaultRequestHeaders.UserAgent.ParseAdd("ApiAggregator/1.0 (Windows NT 10.0; Win64; x64)");
+        c.DefaultRequestHeaders.Authorization =
+            new System.Net.Http.Headers.AuthenticationHeaderValue("X-Api-Key", newsApiConfig.ApiKey);
+
     });
 
 

@@ -1,5 +1,5 @@
-﻿using ApiAggregatorConfiguration;
-using ApiAggregatorControllers.Refit.OpenWeather;
+﻿using ApiAggregatorClients.Refit;
+using ApiAggregatorConfiguration;
 using ApiAggregatorModels.OpenWeather;
 using ApiAggregatorServices.Interfaces;
 
@@ -19,7 +19,7 @@ namespace ApiAggregatorServices
             _config = config;
         }
 
-        public async Task<WeatherModel> GetWeatherAsync(string city)
+        public async Task<WeatherModel> GetWeatherForCityAsync(string city)
         {
             return await _openWeatherApi.GetWeatherForCityAsync(city, _config.ApiKey);
         }

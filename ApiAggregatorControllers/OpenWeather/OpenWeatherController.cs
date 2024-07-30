@@ -1,28 +1,26 @@
 ﻿using Refit;
-using ApiAggregatorConfiguration;
 using Microsoft.AspNetCore.Mvc;
+using ApiAggregatorServices.Interfaces;
 
 namespace ApiAggregatorControllers.OpenWeather
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]/openWeather")]
     public class OpenWeatherController : ControllerBase
     {
-        private readonly IOpenWeatherApi _openWeatherApi;
-        private readonly OpenWeatherConfig _config;
+        private readonly IOpenWeatherService _openWeatherService;
 
-        public OpenWeatherController(IOpenWeatherApi openWeatherApi, OpenWeatherConfig config)
+        public OpenWeatherController(IOpenWeatherService openWeatherService)
         {
-            _openWeatherApi = openWeatherApi;
-            _config = config;
+            _openWeatherService = openWeatherService;
         }
 
-        [HttpGet("{city}")]
+        [HttpGet("city")]
         public async Task<IActionResult> GetWeatherForCityAsync(string city)
         {
             try
             {
-                var weatherData = await _openWeatherApi.GetWeatherForCityAsync(city, _config.ApiKey);
+                var weatherData = await _openWeatherService.GetWeatherForCityAsync(city);
                 return Ok(weatherData);
             }
             catch (ApiException e)
@@ -35,12 +33,12 @@ namespace ApiAggregatorControllers.OpenWeather
             }
         }
 
-        [HttpGet("{zipCode}")]
+        [HttpGet("zipCode")]
         public async Task<IActionResult> GetWeatherForZipCodeAsync(string zipCode)
         {
             try
             {
-                var weatherData = await _openWeatherApi.GetWeatherForZipCodeAsync(zipCode, _config.ApiKey);
+                var weatherData = await _openWeatherService.GetWeatherForZipCodeAsync(zipCode);
                 return Ok(weatherData);
             }
             catch (ApiException e)

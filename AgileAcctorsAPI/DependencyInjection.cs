@@ -7,7 +7,9 @@ namespace ApiAggregator
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddScoped<IOpenWeatherService, OpenWeatherService>();
+            //TODO - probably need to make these scoped in order to cache results
+            services.AddTransient<IOpenWeatherService, OpenWeatherService>();
+            services.AddTransient<INewsApiService, NewsApiService>();
             
             return services;
         }
