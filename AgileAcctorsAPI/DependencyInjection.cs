@@ -10,6 +10,8 @@ namespace ApiAggregator
             services.AddTransient<IOpenWeatherService, OpenWeatherService>();
             services.AddTransient<INewsApiService, NewsApiService>();
             services.AddTransient<ISpotifyService, SpotifyService>();
+            services.AddTransient<ITriviaService, TriviaService>();
+            services.AddTransient<ITravelCompanionService, TravelCompanionService>();
 
             return services;
         }

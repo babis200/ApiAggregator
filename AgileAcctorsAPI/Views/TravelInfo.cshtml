@@ -1,0 +1,29 @@
+﻿@model ApiAggregatorModels.TravelInfo.TravelInfo
+
+@{
+    ViewData["Title"] = "Travel Information";
+}
+
+<h1>Travel Information for @Model.DestinationWeather.Location</h1>
+
+<h2>Local News</h2>
+<ul>
+    @foreach (var article in Model.LocalNews)
+    {
+        <li>
+            <a href="@article.Url" target="_blank">@article.Title</a>
+            <p>@article.Description</p>
+        </li>
+    }
+</ul>
+
+<h2>Weather</h2>
+<p>Temperature: @Model.DestinationWeather.Temperature</p>
+<p>Condition: @Model.DestinationWeather.Humidity</p>
+
+<h2>Trivia/Fact of the Day</h2>
+<p>@Model.TriviaFact</p>
+
+<div>
+    <a href="/">Back</a>
+</div>

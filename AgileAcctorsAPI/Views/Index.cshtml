@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Travel Companion";
+}
+
+<h1>Travel Companion App</h1>
+
+<form asp-action="GetTravelInfo" method="post">
+    <div>
+        <label for="location">Enter your travel destination:</label>
+        <input type="text" id="location" name="location" required />
+    </div>
+    <div>
+        <button type="submit">Get Travel Info</button>
+    </div>
+</form>
