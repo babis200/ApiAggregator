@@ -9,8 +9,8 @@ namespace ApiAggregatorClients.Refit
     {
         [Get("/search")]
         Task<SpotifySearchResponse> SearchForItemAsync(
-            [AliasAs("q")] string keyword, 
-            IEnumerable<Type> type,
+            [AliasAs("q")] string keyword,
+            string types,
             string? market,  //The 2-letter ISO 3166-1 alpha-2 country code
             int limit = 5
             );

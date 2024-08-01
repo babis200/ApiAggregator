@@ -17,7 +17,8 @@ namespace ApiAggregatorServices
         public async Task<SpotifySearchResponse> SearchAsync(
             string keywords, IEnumerable<Type> types, string? market)
         {
-            return await _spotifyApi.SearchForItemAsync(keywords, types, market);
+            var stringTypes = String.Join(',', types);
+            return await _spotifyApi.SearchForItemAsync(keywords, stringTypes, market);
         }
     }
 }

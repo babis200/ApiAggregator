@@ -17,11 +17,11 @@ namespace ApiAggregatorControllers.Spotify
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchAsync(string keywords, IEnumerable<Type> types, string market)
+        public async Task<IActionResult> SearchAsync(string keywords, Type type, string market)
         {
             try
             {
-                var result = await _spotifyService.SearchAsync(keywords, types, market);
+                var result = await _spotifyService.SearchAsync(keywords, new List<Type>() { type }, market);
                 return Ok(result);
             }
             catch (ApiException e)

@@ -40,14 +40,19 @@ builder.Services.AddRefitClient<INewsApi>()
 
     });
 
+builder.Services.AddRefitClient<ISpotifyLoginApi>()
+    .ConfigureHttpClient((Action<HttpClient>)(c =>
+    {
+        c.BaseAddress = spotifyConfig.LoginAddress;
+    }));
+
+builder.Services.AddTransient<SpotifyAuthDelegatingHandler>();
 builder.Services.AddRefitClient<ISpotifyApi>()
-    .ConfigureHttpClient(c =>
+    .AddHttpMessageHandler<SpotifyAuthDelegatingHandler>()
+    .ConfigureHttpClient((Action<HttpClient>)(c =>
     {
         c.BaseAddress = spotifyConfig.BaseAddress;
-        c.DefaultRequestHeaders.Authorization =
-            new System.Net.Http.Headers.AuthenticationHeaderValue(
-                "Basic", $"{spotifyConfig.ClientId}:{spotifyConfig.ClientSecret}");
-    });
+    }));
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

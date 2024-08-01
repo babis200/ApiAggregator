@@ -5,7 +5,6 @@ using ApiAggregatorClients.Refit;
 using ApiAggregatorModels.NewsApi;
 using NewsAPI.Models;
 using Assert = Xunit.Assert;
-using Refit;
 using NewsAPI.Constants;
 using ApiAggregatorServices;
 
@@ -14,6 +13,7 @@ namespace ApiAggregatorTest
     [TestClass]
     public class NewsApiTests
     {
+        [Fact]
         public async Task GetTopHeadlinesAsync_ReturnsArticles_WhenResponseIsSuccessful()
         {
             // Arrange
@@ -25,8 +25,8 @@ namespace ApiAggregatorTest
                 TotalResults = 2,
                 Articles = new List<Article>
                 {
-                    new Article { Title = "Article 1", Description = "Description 1", Url = "http://example.com/1", Author = "Author 1" },
-                    new Article { Title = "Article 2", Description = "Description 2", Url = "http://example.com/2", Author = "Author 2" }
+                    new () { Title = "Article 1", Description = "Description 1", Url = "http://example.com/1", Author = "Author 1" },
+                    new () { Title = "Article 2", Description = "Description 2", Url = "http://example.com/2", Author = "Author 2" }
                 }
             };
 
