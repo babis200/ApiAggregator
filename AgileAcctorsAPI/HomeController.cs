@@ -1,21 +1,24 @@
-﻿using ApiAggregatorServices;
+﻿using ApiAggregatorServices.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
-namespace TravelCompanionApp.Controllers
+namespace ApiAggregator
 {
+    [ApiController]
+    [Route("Home")]
     public class HomeController : Controller
     {
-        private readonly TravelCompanionService _travelCompanionService;
+        private readonly ITravelCompanionService _travelCompanionService;
 
-        public HomeController(TravelCompanionService travelCompanionService)
+        public HomeController(ITravelCompanionService travelCompanionService)
         {
             _travelCompanionService = travelCompanionService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            //TODO find index
+            return View("Index");
         }
 
         [HttpPost]
