@@ -1,8 +1,6 @@
 ﻿using ApiAggregatorServices.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using NewsAPI.Constants;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Refit;
 
 namespace ApiAggregatorControllers.NewsApi

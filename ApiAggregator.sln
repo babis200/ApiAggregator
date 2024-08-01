@@ -21,7 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Presentation", "3.Present
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Application", "4.Application", "{B38050D9-CA1D-4B09-8541-C986837EA3DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAggregatorClients", "ApiAggregatorClients\ApiAggregatorClients.csproj", "{0BDFF161-1D5B-49D4-B731-6AF1D434A4BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAggregatorClients", "ApiAggregatorClients\ApiAggregatorClients.csproj", "{0BDFF161-1D5B-49D4-B731-6AF1D434A4BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAggregatorTests", "ApiAggregatorTest\ApiAggregatorTests.csproj", "{68F52FB7-E09F-423C-982E-196D7DD7A6CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{0BDFF161-1D5B-49D4-B731-6AF1D434A4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BDFF161-1D5B-49D4-B731-6AF1D434A4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BDFF161-1D5B-49D4-B731-6AF1D434A4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68F52FB7-E09F-423C-982E-196D7DD7A6CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68F52FB7-E09F-423C-982E-196D7DD7A6CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68F52FB7-E09F-423C-982E-196D7DD7A6CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68F52FB7-E09F-423C-982E-196D7DD7A6CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

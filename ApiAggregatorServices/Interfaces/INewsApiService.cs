@@ -5,8 +5,8 @@ namespace ApiAggregatorServices.Interfaces
 {
     public interface INewsApiService
     {
-        Task<ApiResponse> GetTopHeadlinesAsync(string? country, Categories? category, string keywords);
-        Task<ApiResponse> GetEverythingAsync(string? keyword);
+        Task<NewsApiResponse> GetTopHeadlinesAsync(string? country, Categories? category, string keywords);
+        Task<NewsApiResponse> GetEverythingAsync(string? keyword);
 
     }
 }

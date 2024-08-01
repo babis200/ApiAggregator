@@ -3,7 +3,7 @@ using NewsAPI.Models;
 
 namespace ApiAggregatorModels.NewsApi
 {
-    public class ApiResponse
+    public class NewsApiResponse
     {
         public Statuses Status { get; set; }
         public ErrorCodes? Code { get; set; }

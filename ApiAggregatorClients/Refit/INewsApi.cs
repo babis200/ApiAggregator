@@ -8,17 +8,15 @@ namespace ApiAggregatorClients.Refit
     public interface INewsApi
     {
         [Get("/top-headlines")]
-        Task<ApiResponse> GetTopHeadlinesAsync(
+        Task<NewsApiResponse> GetTopHeadlinesAsync(
             string country, //The 2-letter ISO 3166-1
             Categories? category,
-            string? keywords,
-            string apiKey
+            string? keywords
             );
 
         [Get("/everything")]
-        Task<ApiResponse> GetEverythingAsync(
-            string? keywords,
-            string apiKey
+        Task<NewsApiResponse> GetEverythingAsync(
+            string? keywords
             );
 
     }

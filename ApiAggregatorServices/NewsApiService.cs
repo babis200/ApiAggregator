@@ -9,22 +9,20 @@ namespace ApiAggregatorServices
     public class NewsApiService : INewsApiService
     {
         private readonly INewsApi _newsApi;
-        private readonly NewsApiConfig _config;
 
-        public NewsApiService(INewsApi newsApi, NewsApiConfig config)
+        public NewsApiService(INewsApi newsApi)
         {
-            _config = config;
             _newsApi = newsApi;
         }
 
-        public async Task<ApiResponse> GetEverythingAsync(string? keyword)
+        public async Task<NewsApiResponse> GetEverythingAsync(string? keyword)
         {
-            return await _newsApi.GetEverythingAsync(keyword, _config.ApiKey);
+            return await _newsApi.GetEverythingAsync(keyword);
         }
 
-        public async Task<ApiResponse> GetTopHeadlinesAsync(string country,Categories? category, string? keywords)
+        public async Task<NewsApiResponse> GetTopHeadlinesAsync(string country, Categories? category, string? keywords)
         {
-            return await _newsApi.GetTopHeadlinesAsync(country, category, keywords, _config.ApiKey);
+            return await _newsApi.GetTopHeadlinesAsync(country, category, keywords);
         }
 
     }
